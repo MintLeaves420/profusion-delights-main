@@ -3,9 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Profusion Delights</title>
 </head>
 <body>
-    <h1> Kilo 100 rooba bro </h1>
+    <h1>Welcome!</h1>
+    <button id="apiButton">Send POST Request</button>
+
+    <script>
+        document.getElementById('apiButton').addEventListener('click', () => {
+            fetch('https://your-api-id.execute-api.your-region.amazonaws.com/prod/myresource', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ key: 'value' })
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
 </body>
 </html>
