@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Pages with AWS POST Endpoint</title>
+</head>
+<body>
+    <h1>Submit Data to AWS Endpoint</h1>
+    <form id="dataForm">
+        <input type="text" id="inputData" placeholder="Enter data" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById('dataForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const inputData = document.getElementById('inputData').value;
+
+            fetch('arn:aws:execute-api:ap-south-1:058264490166:y28q359o6d/*/POST/orders', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ data: inputData }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
