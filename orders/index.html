@@ -18,7 +18,7 @@
 
             const inputData = document.getElementById('inputData').value;
 
-            fetch('arn:aws:execute-api:ap-south-1:058264490166:y28q359o6d/*/POST/orders', {
+            fetch('https://y28q359o6d.execute-api.ap-south-1.amazonaws.com/orderv2', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
